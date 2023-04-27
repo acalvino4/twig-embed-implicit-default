@@ -1,13 +1,14 @@
 # Twig Embed with Implicit Default Block
 
 > **Warning**
-> This extension does introduce a breaking change to twig. However, it will most likely not affect too many of your files, is probably quite easy to work around, and is most definitely worth it. See [details](#breaking-change).
+> This extension introduces a breaking change to twig. However, it will most likely not affect too many of your files, is probably quite easy to work around, and is most definitely worth it. See [details](#breaking-change).
 
 1. [Rationale](#rationale)
-1. [Getting Started](#getting-started)
 1. [Usage](#usage)
-    1. [Details](#details)
-    1. [Breaking Change](#breaking-change)
+    - [Details](#details)
+    - [Breaking Change](#breaking-change)
+1. [Getting Started](#getting-started)
+
 
 ## Rationale
 
@@ -28,7 +29,7 @@ In vanilla twig, to override a slot of a parent template via an embed, we need t
 </div>
 ```
 
-When following best practices to keep code modular and dry, you'll typically create components for various code chunks, but this results in rather bloated and unreadable markup (and this is only two levels of nesting!):
+When following best practices to keep code modular and dry, you'll typically create components for various code chunks, but this results in rather bloated and unreadable markup, especially as you start to nest (and this is only two levels!):
 
 ```twig
 {% embed 'wrapper.twig' %}
@@ -46,17 +47,6 @@ When following best practices to keep code modular and dry, you'll typically cre
 The explicit block declarations are handy for extending layouts (where you'll need 'header', 'footer', and 'sidebar', for example), but in most cases, `embed` is probably just being used to include components where you need to pass in some content, and for _these_ cases, typically only one content slot is required.
 
 So we've sacrificed simplicity of the base case for greater flexibility ... but what if we could have both?
-
-## Getting Started
-
-```
-composer require acalvino4/twig-embed-implicit-default
-```
-
-Then register your extension as appropriate for your framework.
-- [Vanilla](https://twig.symfony.com/doc/3.x/advanced.html#extending-twig)
-- [Craft CMS](https://craftcms.com/docs/4.x/extend/extending-twig.html#register-a-twig-extension)
-- [Symphony](https://symfony.com/doc/current/templates.html#register-an-extension-as-a-service)
 
 ## Usage
 
@@ -90,7 +80,6 @@ To specify where that default content goes in the component template, follow the
 
 ```twig
 {% block default %}{% endblock %}
-
 {# same as #}
 {% block default '' %}
 ```
@@ -137,14 +126,14 @@ If you have both implicit default content and an explicit default block, an erro
 {% embed 'wrapper.twig' %}
   <p>This is default block content</p>
   {% block default %}
-    Other default content?
+    Other default content???
   {% endblock %}
 {% endembed %}
 ```
 
 ### Breaking Change
 
-Twig, by default, does not allow content _that outputs_ within `embed` tags but outside `block` tags. In this respect, this extension doesn't change any defined behavior. However, twig does allow _non-outputting content_ in such a context, for example:
+Twig, by default, does not allow content _that outputs_ within `embed` tags but outside `block` tags. In this respect, this extension doesn't change any defined behavior; it only defines what previously was an error. However, twig does allow _non-outputting content_ in such a context, for example:
 
 ```twig
 {% embed 'wrapper.twig' %}
@@ -158,3 +147,14 @@ Twig, by default, does not allow content _that outputs_ within `embed` tags but 
 Using this extension, that `set` tag would get absorbed as part of the default block, and `a` would be undefined in the following block.
 
 In this case, the solution is simple: move the `set` tag outside the `embed` scope. I suspect most instances of this change will be equally straightforward to adapt for this extension. If you run into something more complex, please file an issue and I will try to deal with or document that case.
+
+## Getting Started
+
+```sh
+composer require acalvino4/twig-embed-implicit-default
+```
+
+Then register the extension as appropriate for your framework.
+- [Vanilla](https://twig.symfony.com/doc/3.x/advanced.html#extending-twig)
+- [Craft CMS](https://craftcms.com/docs/4.x/extend/extending-twig.html#register-a-twig-extension)
+- [Symphony](https://symfony.com/doc/current/templates.html#register-an-extension-as-a-service)
