@@ -11,7 +11,7 @@
       }
     ],
     "require": {
-        "twig/twig": "^3.5"
+        "twig/twig": "^3.3"
     },
     "require-dev": {
         "craftcms/phpstan": "dev-main",
