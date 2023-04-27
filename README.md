@@ -107,7 +107,7 @@ The implicit default content can be combined with (any number of) named blocks:
 </div>
 ```
 
-The implicit default content needs to be placed _before_ any explicit blocks:
+The implicit default content needs to be placed _before_ any explicit blocks (See [this issue](https://github.com/acalvino4/twig-embed-implicit-default/issues/1)):
 
 ```twig
 {# Will throw error: "A template that extends another one cannot include content outside Twig blocks." #}
