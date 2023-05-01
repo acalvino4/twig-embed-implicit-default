@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Test\App\Twig\Extension;
 
-use Twig\Test\IntegrationTestCase;
 use acalvino4\embed\Extension;
+use Twig\Test\IntegrationTestCase;
 
 final class EmbedTagExtensionTest extends IntegrationTestCase
 {
