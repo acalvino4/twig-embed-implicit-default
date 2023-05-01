@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- add tests
+- add ecs and phpstan checks for test directory
+
 ## [0.1.1] - 2023-04-27
 
 - Fix changelog formatting
