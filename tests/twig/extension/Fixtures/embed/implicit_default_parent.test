@@ -1,0 +1,21 @@
+--TEST--
+implicit default block with parent
+--TEMPLATE--
+This is the main template.
+{% embed "parent.twig" %}
+  {{ parent() }}
+  Here is the default block content.
+{% endembed %}
+--TEMPLATE(parent.twig)--
+This is the embeded template start.
+{% block default 'Parent content.' %}
+This is the embeded template end.
+--DATA--
+return []
+--EXPECT--
+This is the main template.
+
+This is the embeded template start.
+  Parent content.
+  Here is the default block content.
+This is the embeded template end.

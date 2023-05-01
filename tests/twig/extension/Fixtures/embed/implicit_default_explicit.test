@@ -1,0 +1,20 @@
+--TEST--
+implicit default block with named default block
+--TEMPLATE--
+This is the main template.
+{% embed "parent.twig" %}
+  Here is the implicit default block content.
+  {% block default %}
+    Explicit default block content.
+  {% endblock %}
+{% endembed %}
+--TEMPLATE(parent.twig)--
+This is the embeded template start.
+{% block default '' %}
+This is the embeded template middle.
+{% block other '' %}
+This is the embeded template end.
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\SyntaxError: The block 'default' has already been defined line 3 in "index.twig" at line 5.
