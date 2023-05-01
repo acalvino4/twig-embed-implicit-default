@@ -16,7 +16,7 @@
     "require-dev": {
         "craftcms/phpstan": "dev-main",
         "craftcms/ecs": "dev-main",
-        "phpunit/phpunit": "^9"
+        "phpunit/phpunit": "^10"
     },
     "autoload": {
         "psr-4": {
@@ -25,7 +25,7 @@
         }
     },
     "scripts": {
-        "test": "ecs check --ansi && phpstan --memory-limit=1G",
+        "test": "ecs check --ansi && phpstan --memory-limit=1G && phpunit",
         "fix": "ecs check --ansi --fix"
       },
     "minimum-stability": "dev",
