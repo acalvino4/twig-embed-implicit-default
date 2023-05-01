@@ -15,11 +15,13 @@
     },
     "require-dev": {
         "craftcms/phpstan": "dev-main",
-        "craftcms/ecs": "dev-main"
+        "craftcms/ecs": "dev-main",
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "acalvino4\\embed\\": "src/"
+            "acalvino4\\embed\\": "src/",
+            "acalvino4\\embed\\test\\": "tests/"
         }
     },
     "scripts": {

@@ -5,10 +5,10 @@
 
 1. [Rationale](#rationale)
 1. [Usage](#usage)
-    - [Details](#details)
+    - [Details](#notes)
     - [Breaking Change](#breaking-change)
 1. [Getting Started](#getting-started)
-
+    - [Craft CMS](#craft-cms)
 
 ## Rationale
 
@@ -86,7 +86,7 @@ To specify where that default content goes in the component template, follow the
 
 This works because all this extension does is parse the initial content within the embed into a block named 'default'.
 
-### Details
+### Notes
 
 The implicit default content can be combined with (any number of) named blocks:
 
@@ -155,6 +155,23 @@ composer require acalvino4/twig-embed-implicit-default
 ```
 
 Then register the extension as appropriate for your framework.
+
 - [Vanilla](https://twig.symfony.com/doc/3.x/advanced.html#extending-twig)
 - [Craft CMS](https://craftcms.com/docs/4.x/extend/extending-twig.html#register-a-twig-extension)
 - [Symphony](https://symfony.com/doc/current/templates.html#register-an-extension-as-a-service)
+
+### Craft CMS
+
+For example, to register this extension in Craft CMS, just include the following code via a site module:
+
+```php
+use acalvino4\embed\Extension;
+
+class Module extends BaseModule
+{
+  public function init(): void {
+    //...
+    Craft::$app->view->registerTwigExtension(new Extension());
+  }
+}
+```
