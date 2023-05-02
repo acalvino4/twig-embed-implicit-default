@@ -8,7 +8,7 @@ jobs:
     - name: Setup platform
       uses: shivammathur/setup-php@v2
       with:
-        php_version: "8.2"
+        php-version: "8.2"
         extensions: intl, xdebug
         tools: composer:2
         ini-values: zend.assertions=1, xdebug.mode=coverage

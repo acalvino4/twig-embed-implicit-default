@@ -1,7 +1,31 @@
 # Twig Embed with Implicit Default Block
 
+![License](https://img.shields.io/github/license/acalvino4/twig-embed-implicit-default)
+![Build Status](https://img.shields.io/github/actions/workflow/status/acalvino4/twig-embed-implicit-default/qa.yml)
+
+![Test Coverage](https://raw.githubusercontent.com/acalvino4/twig-embed-implicit-default/image-data/coverage.svg)
+![Phpstan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg)
+![Easy Coding Standard](https://img.shields.io/badge/Easy%20Coding%20Standard-%20enabled-brightgreen.svg)
+
+## TLDR
+
+```twig
+{% embed 'wrapper.twig' %}
+  Default block content
+{% endembed %}
+
+{# wrapper.twig #}
+<div class='bg-slate-300'>
+  <div class='max-w-7xl py-16 '>
+    <p>{% block default '' %}</p>{# --> renders "Default block content" #}
+  </div>
+</div>
+```
+
 > **Warning**
 > This extension introduces a breaking change to twig. However, it will most likely not affect too many of your files, is probably quite easy to work around, and is most definitely worth it. See [details](#breaking-change).
+
+## Contents
 
 1. [Rationale](#rationale)
 1. [Usage](#usage)
