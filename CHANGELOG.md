@@ -4,6 +4,7 @@
 
 - add tests
 - add ecs and phpstan checks for test directory
+- add github actions workflow to run tests and generate code coverage
 
 ## [0.1.1] - 2023-04-27
 
