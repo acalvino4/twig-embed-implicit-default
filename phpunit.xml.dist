@@ -21,7 +21,7 @@
   </source>
   <coverage pathCoverage="true">
     <report>
-      <clover outputFile="coverage.xml"/>
+      <clover outputFile="clover.xml"/>
     </report>
   </coverage>
 </phpunit>
