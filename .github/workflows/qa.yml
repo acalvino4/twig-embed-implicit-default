@@ -1,0 +1,36 @@
+name: "Quality Assurance: phpunit, phpstan, and ecs"
+on:
+  push:
+      branches:
+        - master
+jobs:
+  test:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup platform
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: "8.2"
+        extensions: intl, xdebug
+        tools: composer:2
+        ini-values: zend.assertions=1, xdebug.mode=coverage
+    - name: Install dependencies
+      run: composer install
+    - name: Run tests
+      run: composer run-script test
+
+    - name: Make code coverage badge
+      uses: timkrase/phpunit-coverage-badge@v1.2.1
+      with:
+        coverage_badge_path: output/coverage.svg
+        push_badge: false
+
+    - name: Git push to image-data branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        publish_dir: ./output
+        publish_branch: image-data
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'

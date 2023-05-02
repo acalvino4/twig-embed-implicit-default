@@ -1,0 +1,26 @@
+--TEST--
+implicit default block with additional named block
+--TEMPLATE--
+This is the main template.
+{% embed "parent.twig" %}
+  Here is the default block content.
+  {% block other %}
+    Other block content.
+  {% endblock %}
+{% endembed %}
+--TEMPLATE(parent.twig)--
+This is the embeded template start.
+{% block default '' %}
+This is the embeded template middle.
+{% block other '' %}
+This is the embeded template end.
+--DATA--
+return []
+--EXPECT--
+This is the main template.
+
+This is the embeded template start.
+  Here is the default block content.
+  This is the embeded template middle.
+    Other block content.
+  This is the embeded template end.

@@ -3,3 +3,4 @@ parameters:
     paths:
         - ecs.php
         - src
+        - tests

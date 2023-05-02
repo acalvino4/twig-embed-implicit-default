@@ -10,6 +10,7 @@ return static function(ECSConfig $ecsConfig): void {
     $ecsConfig->paths([
         __DIR__ . '/ecs.php',
         __DIR__ . '/src',
+        __DIR__ . '/tests',
     ]);
 
     $ecsConfig->sets([SetList::CRAFT_CMS_4]);

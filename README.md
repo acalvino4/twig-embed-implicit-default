@@ -1,14 +1,38 @@
 # Twig Embed with Implicit Default Block
 
+![License](https://img.shields.io/github/license/acalvino4/twig-embed-implicit-default)
+![Build Status](https://img.shields.io/github/actions/workflow/status/acalvino4/twig-embed-implicit-default/qa.yml)
+
+![Test Coverage](https://raw.githubusercontent.com/acalvino4/twig-embed-implicit-default/image-data/coverage.svg)
+![Phpstan Level](https://img.shields.io/badge/PHPStan-level%208-brightgreen.svg)
+![Easy Coding Standard](https://img.shields.io/badge/Easy%20Coding%20Standard-%20enabled-brightgreen.svg)
+
+## TLDR
+
+```twig
+{% embed 'wrapper.twig' %}
+  Default block content
+{% endembed %}
+
+{# wrapper.twig #}
+<div class='bg-slate-300'>
+  <div class='max-w-7xl py-16 '>
+    <p>{% block default '' %}</p>{# --> renders "Default block content" #}
+  </div>
+</div>
+```
+
 > **Warning**
 > This extension introduces a breaking change to twig. However, it will most likely not affect too many of your files, is probably quite easy to work around, and is most definitely worth it. See [details](#breaking-change).
 
+## Contents
+
 1. [Rationale](#rationale)
 1. [Usage](#usage)
-    - [Details](#details)
+    - [Details](#notes)
     - [Breaking Change](#breaking-change)
 1. [Getting Started](#getting-started)
-
+    - [Craft CMS](#craft-cms)
 
 ## Rationale
 
@@ -86,7 +110,7 @@ To specify where that default content goes in the component template, follow the
 
 This works because all this extension does is parse the initial content within the embed into a block named 'default'.
 
-### Details
+### Notes
 
 The implicit default content can be combined with (any number of) named blocks:
 
@@ -155,6 +179,23 @@ composer require acalvino4/twig-embed-implicit-default
 ```
 
 Then register the extension as appropriate for your framework.
+
 - [Vanilla](https://twig.symfony.com/doc/3.x/advanced.html#extending-twig)
 - [Craft CMS](https://craftcms.com/docs/4.x/extend/extending-twig.html#register-a-twig-extension)
 - [Symphony](https://symfony.com/doc/current/templates.html#register-an-extension-as-a-service)
+
+### Craft CMS
+
+For example, to register this extension in Craft CMS, just include the following code via a site module:
+
+```php
+use acalvino4\embed\Extension;
+
+class Module extends BaseModule
+{
+  public function init(): void {
+    //...
+    Craft::$app->view->registerTwigExtension(new Extension());
+  }
+}
+```

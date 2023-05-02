@@ -1,7 +1,7 @@
 {
     "name": "acalvino4/twig-embed-implicit-default",
-    "description": "Extends the twig embed tag to allow an unadorned default block",
-    "version": "0.1",
+    "description": "Extends the twig embed tag to allow an implicit default block",
+    "version": "1.0.0",
     "homepage": "https://github.com/acalvino4/twig-embed-with-default-block",
     "license": "MIT",
     "authors": [
@@ -15,17 +15,22 @@
     },
     "require-dev": {
         "craftcms/phpstan": "dev-main",
-        "craftcms/ecs": "dev-main"
+        "craftcms/ecs": "dev-main",
+        "phpunit/phpunit": "^10"
     },
     "autoload": {
         "psr-4": {
-            "acalvino4\\embed\\": "src/"
+            "acalvino4\\embed\\": "src/",
+            "acalvino4\\embed\\test\\": "tests/"
         }
     },
     "scripts": {
-        "test": "ecs check --ansi && phpstan --memory-limit=1G",
+        "test": "ecs check --ansi && phpstan --memory-limit=1G && phpunit",
         "fix": "ecs check --ansi --fix"
       },
+    "config": {
+      "optimize-autoloader": true
+    },
     "minimum-stability": "dev",
     "prefer-stable": true
 }
