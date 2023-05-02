@@ -5,9 +5,14 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
     - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6
+    - name: Setup platform
+      uses: shivammathur/setup-php@v2
       with:
-        version: 2
-        php_version: "8.1"
-        php_extensions: intl xdebug
-    - run: composer run-script test
+        php_version: "8.2"
+        extensions: intl, xdebug
+        tools: composer:2
+        ini-values: zend.assertions=1, xdebug.mode=coverage
+    - name: Install dependencies
+      run: composer install
+    - name: Run tests
+      run: composer run-script test
