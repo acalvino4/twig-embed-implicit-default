@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [1.0.0] - 2023-05-02
+
 - add tests
 - add ecs and phpstan checks for test directory
 - add github actions workflow to run tests and generate code coverage
@@ -15,5 +17,6 @@
 
 - Add twig extension that allows parsing of an implicit default block from embed contents
 
+[1.0.0]: (https://github.com/acalvino4/twig-embed-implicit-default/releases/tag/1.0.0)
 [0.1.1]: (https://github.com/acalvino4/twig-embed-implicit-default/releases/tag/0.1.1)
 [0.1.0]: (https://github.com/acalvino4/twig-embed-implicit-default/releases/tag/0.1.0)
