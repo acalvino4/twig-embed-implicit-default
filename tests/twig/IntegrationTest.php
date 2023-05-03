@@ -7,11 +7,11 @@ namespace Test\App\Twig\Extension;
 use acalvino4\embed\Extension;
 use Twig\Test\IntegrationTestCase;
 
-final class EmbedTagExtensionTest extends IntegrationTestCase
+final class IntegrationTest extends IntegrationTestCase
 {
     protected function getFixturesDir(): string
     {
-        return __DIR__ . "/Fixtures/";
+        return __DIR__ . "/fixtures/";
     }
 
     protected function getExtensions(): iterable
