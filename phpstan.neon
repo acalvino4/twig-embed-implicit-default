@@ -1,6 +1,6 @@
 parameters:
     level: 8
     paths:
-        - ecs.php
         - src
         - tests
+        - ecs.php

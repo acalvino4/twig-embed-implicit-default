@@ -186,16 +186,11 @@ Then register the extension as appropriate for your framework.
 
 ### Craft CMS
 
-For example, to register this extension in Craft CMS, just include the following code via a site module:
+Since I am primarily a Craft developer, I created a plugin that wraps this package, so including it in your site is as easy an any other plugin.
 
-```php
-use acalvino4\embed\Extension;
-
-class Module extends BaseModule
-{
-  public function init(): void {
-    //...
-    Craft::$app->view->registerTwigExtension(new Extension());
-  }
-}
+```sh
+composer require acalvino/craft-embed-implicit-default
+./craft plugin/install embed-implicit-default
 ```
+
+Or just find it on the plugin store and install from there.
