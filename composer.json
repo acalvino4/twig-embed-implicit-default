@@ -1,7 +1,7 @@
 {
   "name": "acalvino4/twig-embed-implicit-default",
   "description": "Extends the twig embed tag to allow an implicit default block",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/acalvino4/twig-embed-with-default-block",
   "license": "mit",
   "authors": [
