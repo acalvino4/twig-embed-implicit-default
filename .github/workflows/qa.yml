@@ -1,17 +1,17 @@
 name: "Quality Assurance: phpunit, phpstan, and ecs"
-on:
-  push:
-      branches:
-        - master
+on: [push]
 jobs:
   test:
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        php_version: [8.1, 8.2]
     steps:
     - uses: actions/checkout@v3
     - name: Setup platform
       uses: shivammathur/setup-php@v2
       with:
-        php-version: "8.2"
+        php-version: ${{ matrix.php_version }}
         extensions: intl, xdebug
         tools: composer:2
         ini-values: zend.assertions=1, xdebug.mode=coverage
